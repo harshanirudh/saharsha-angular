@@ -1,0 +1,49 @@
+
+<!-- <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+  <a class="navbar-brand" href="#">SAHARSHA CHITS</a>
+  <ul class="navbar-nav">
+    <li class="nav-item-dropdown">
+      <a class="nav-link dropdown-toggle  " href="#" data-toggle="dropdown"  >Users</a>
+      <div  class="dropdown-menu " appDropdown #r='appDropdown'>
+        <a class="dropdown-item" href="#">Add Users</a>
+        <a class="dropdown-item" href="#">Update Users</a>
+        <a class="dropdown-item" href="#">Delete Users</a>
+      </div>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link " href="#">Chits</a>>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link " href="#">Payments</a>
+    </li>
+  </ul>
+</nav> -->
+
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <span style="flex-grow: 0.05">SAHARSHA CHITS</span>
+    <span style="flex-grow: 0.05"></span>
+    <a mat-button [matMenuTriggerFor]="usrmenu"  > USERS</a>
+  <mat-menu #usrmenu="matMenu"  >
+      <a mat-menu-item routerLink='/Users/all'>All Users </a>
+      <a mat-menu-item routerLink='/User'>Edit Users</a>
+    </mat-menu>
+
+    <span style="flex-grow: 0.05"></span>
+    <a mat-button routerLink='/Chits'  > CHITS</a>
+    <!-- <mat-menu #chitsmenu="matMenu">
+      <a mat-menu-item href='#'>Active Chits</a>
+      <a mat-menu-item>Completed Chits</a>
+      <a mat-menu-item>Upcoming Chits</a>
+    </mat-menu> -->
+
+    <span style="flex-grow: 0.05"></span>
+    <a mat-button [matMenuTriggerFor]="paymentmenu"  > PAYMENTS</a>
+  <mat-menu #paymentmenu="matMenu"  >
+      <a mat-menu-item routerLink='/Payments/All'> All Payments </a>
+      <a mat-menu-item routerLink='/Payments/new' >New Payments</a>
+    </mat-menu>
+  </mat-toolbar-row>
+</mat-toolbar>
+
+

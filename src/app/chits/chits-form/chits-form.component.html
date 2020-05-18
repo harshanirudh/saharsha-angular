@@ -1,0 +1,76 @@
+<div class="myform">
+  <mat-card>
+    <form [formGroup]="chitForm">
+      <mat-grid-list cols="4" rowHeight="70px" [gutterSize]="'30px'">
+
+        <mat-grid-tile [colspan]="2">
+          <mat-form-field>
+            <mat-label>Chit Group Name</mat-label>
+            <input matInput type="text" placeholder="Ex: LTGX1004" formControlName="chitName">
+            <mat-error *ngIf="this.chitForm.controls['chitName'].hasError('pattern')">Only Numbers</mat-error>
+          </mat-form-field>
+        </mat-grid-tile>
+
+        <mat-grid-tile [colspan]="2">
+          <mat-form-field>
+            <mat-label>Chit Value</mat-label>
+            <input matInput type="tel" placeHolder="Ex: 100000" formControlName="chitValue">
+          </mat-form-field>
+        </mat-grid-tile>
+
+        <mat-grid-tile [colspan]="2">
+          <mat-form-field>
+            <mat-label>Registration date</mat-label>
+            <input matInput [matDatepicker]="picker" formControlName="regDate" #dob>
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker touchUi #picker></mat-datepicker>
+            <mat-error>Please enter a valid Date</mat-error>
+          </mat-form-field>
+        </mat-grid-tile>
+
+        <mat-grid-tile [colspan]="2">
+          <mat-form-field>
+            <mat-label>Commencement Date</mat-label>
+            <input matInput [matDatepicker]="commpicker" formControlName="commDate" #dob>
+            <mat-datepicker-toggle matSuffix [for]="commpicker"></mat-datepicker-toggle>
+            <mat-datepicker touchUi #commpicker></mat-datepicker>
+            <mat-error>Please enter a valid Date</mat-error>
+          </mat-form-field>
+        </mat-grid-tile>
+
+        <mat-grid-tile [colspan]=2>
+          <mat-form-field>
+            <mat-label>Max Members</mat-label>
+            <input matInput type="number" formControlName="maxUsers">
+          </mat-form-field>
+        </mat-grid-tile>
+
+        <mat-grid-tile [colspan]=2>
+        </mat-grid-tile>
+
+        <mat-grid-tile [colspan]=2>
+          <mat-form-field>
+            <mat-label>Start Month</mat-label>
+            <input matInput [matDatepicker]="startpicker" formControlName="startMonth" >
+            <mat-datepicker-toggle matSuffix [for]="startpicker"></mat-datepicker-toggle>
+            <mat-datepicker touchUi #startpicker startView="multi-year" disabled="false"></mat-datepicker>
+            <mat-error>Please enter a valid Month</mat-error>
+          </mat-form-field>
+        </mat-grid-tile>
+
+        <mat-grid-tile [colspan]=2>
+          <mat-form-field>
+            <mat-label>End Month</mat-label>
+            <input matInput [matDatepicker]="endpicker" formControlName="endMonth" >
+            <mat-datepicker-toggle matSuffix [for]="endpicker"></mat-datepicker-toggle>
+            <mat-datepicker touchUi #endpicker startView="multi-year" disabled="false"></mat-datepicker>
+            <mat-error>Please enter a valid Month</mat-error>
+          </mat-form-field>
+        </mat-grid-tile>
+        <mat-grid-tile [colspan]=4>
+          <button mat-raised-button type="submit" color="warn" [disabled]="!chitForm.valid" >Submit</button>
+        </mat-grid-tile>
+      </mat-grid-list>
+    </form>
+  </mat-card>
+</div>

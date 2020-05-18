@@ -1,0 +1,85 @@
+<div class="myform">
+    <form [formGroup]='paymentForm' (ngSubmit)="onSubmit()">
+      <mat-grid-list cols='4' rowHeight="70px" [gutterSize]="'30px'">
+        <mat-grid-tile [colspan]='colspan'>
+          <mat-form-field>
+            <mat-label>Payment Mode :</mat-label>
+            <mat-select (valueChange)='pymntType($event)' formControlName="paymntMode" #slct>
+              <mat-option value="cash">Cash</mat-option>
+              <mat-option value="cheque">Cheque</mat-option>
+              <mat-option value="upi">UPI</mat-option>
+              <mat-option value="netbanking">Net Banking</mat-option>
+            </mat-select>
+            <mat-error *ngIf="this.paymentForm.controls['paymntMode'].hasError('required')">Payment mode is a required field</mat-error>
+          </mat-form-field>
+        </mat-grid-tile>
+        <mat-grid-tile [colspan]='colspan'>
+          <mat-form-field>
+            <mat-label>Payment Date</mat-label>
+            <input matInput [matDatepicker]="pymntDtPicker" formControlName="paymntDt">
+            <mat-datepicker-toggle matSuffix [for]="pymntDtPicker"></mat-datepicker-toggle>
+            <mat-datepicker #pymntDtPicker></mat-datepicker>
+          </mat-form-field>
+        </mat-grid-tile>
+        <mat-grid-tile [colspan]='colspan' >
+          <mat-form-field>
+            <mat-label>Transaction Ref No</mat-label>
+            <input matInput  formControlName="transRef">
+          </mat-form-field>
+        </mat-grid-tile>
+        <mat-grid-tile [colspan]='colspan'>
+          <mat-form-field>
+            <mat-label>Member Name</mat-label>
+            <input type="text" matInput [matAutocomplete]="auto" formControlName="memberName">
+            <mat-autocomplete autoActiveFirstOption #auto='matAutocomplete'>
+              <mat-option *ngFor="let user of filterusers |async " [value]="user">
+                {{user}}
+              </mat-option>
+            </mat-autocomplete>
+            <mat-error *ngIf="this.paymentForm.controls['memberName'].hasError('match')">Please select an option</mat-error>
+          </mat-form-field>
+        </mat-grid-tile>
+        <mat-grid-tile [colspan]='colspan'>
+          <mat-form-field>
+            <mat-label>Chit Number</mat-label>
+            <input  matInput [matAutocomplete]="chit" formControlName="chitNum">
+            <mat-autocomplete autoActiveFirstOption #chit='matAutocomplete'>
+              <mat-option *ngFor="let no of filterNums | async" [value]="no">
+                {{no}}
+              </mat-option>
+            </mat-autocomplete>
+            <mat-error *ngIf="this.paymentForm.controls['chitNum'].hasError('match')">Please select an option</mat-error>
+          </mat-form-field>
+        </mat-grid-tile>
+        <mat-grid-tile [colspan]='colspan'>
+          <mat-form-field>
+            <mat-label>Installment Month No</mat-label>
+            <input  matInput [matAutocomplete]="monthNo" formControlName="monthNum">
+            <mat-autocomplete autoActivateFirstOption #monthNo='matAutocomplete'>
+              <mat-option *ngFor="let mon of filterNoMonths | async" [value]="mon">
+                {{mon}}
+              </mat-option>
+            </mat-autocomplete>
+            <mat-error *ngIf="this.paymentForm.controls['monthNum'].hasError('match')">Please select an option</mat-error>
+          </mat-form-field>
+        </mat-grid-tile>
+        <mat-grid-tile  [colspan]='colspan'>
+          <mat-form-field>
+            <mat-label>Agent Name </mat-label>
+            <input matInput [matAutocomplete]="agent" formControlName="agentNm">
+            <mat-autocomplete autoActivateFirstOption #agent='matAutocomplete'>
+              <mat-option *ngFor="let agent of filterAgents | async" [value]="agent">
+                {{agent}}
+              </mat-option>
+            </mat-autocomplete>
+            <mat-error *ngIf="this.paymentForm.controls['agentNm'].hasError('match')">Please select an option</mat-error>
+          </mat-form-field>
+        </mat-grid-tile>
+        <mat-grid-tile [colspan]=4>
+          <button mat-raised-button type="submit" color="warn" [disabled]="!paymentForm.valid" style="margin:5%">Submit</button>
+          <button mat-raised-button type="reset" color="primary" [disabled]="paymentForm.untouched && paymentForm.pristine">Reset</button>
+        </mat-grid-tile>
+      </mat-grid-list>
+    </form>
+
+</div>

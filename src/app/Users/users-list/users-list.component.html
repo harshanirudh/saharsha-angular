@@ -1,0 +1,32 @@
+<br><div  style="text-align: center;">
+<button mat-raised-button  color="warn" routerLink="/Users/new"> Add New User</button>
+</div>
+<div class="container-fluid">
+  <br>
+  <table class="table">
+    <thead class="thead-dark">
+      <tr>
+        <th> User ID</th>
+        <th>User Name</th>
+        <th>User Catagory</th>
+        <th>DOB</th>
+        <th></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <ng-container *ngFor="let user of UserList">
+        <tr>
+
+          <td>{{user.uid}}</td>
+          <td>{{user.uname}}</td>
+          <td>{{user.ucat}}</td>
+          <td>{{user.dob}}</td>
+          <td><input name="" id="" class="btn btn-primary" type="button" value="View Details" (click)="sendToUserDetails(this.user)"></td>
+
+        </tr>
+      </ng-container>
+    </tbody>
+
+  </table>
+</div>
