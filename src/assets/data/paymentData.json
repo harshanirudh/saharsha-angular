@@ -1,0 +1,62 @@
+[
+  {
+  "paymentId": "23",
+  "paymentMode": "Cheque",
+  "paymentDt": "23/02/97",
+  "paymentTransRef": "TR100037",
+  "paymentMemNm": "Suhas",
+  "paymentChitNum": "LTGX 1007 56",
+  "paymentInsMonNum": "22",
+  "paymentAgentNm": "GRR"
+  },
+  {
+    "paymentId": "10",
+    "paymentMode": "cheque",
+    "paymentDt": "23/02/97",
+    "paymentTransRef": "TR100037",
+    "paymentMemNm": "Harsha",
+    "paymentChitNum": "LTGX 1007 56",
+    "paymentInsMonNum": "22",
+    "paymentAgentNm": "GRR"
+  },
+  {
+    "paymentId": "23",
+    "paymentMode": "Cheque",
+    "paymentDt": "23/02/97",
+    "paymentTransRef": "TR100037",
+    "paymentMemNm": "Haritha",
+    "paymentChitNum": "LTGX 1007 56",
+    "paymentInsMonNum": "22",
+    "paymentAgentNm": "GRR"
+  },
+  {
+    "paymentId": "19",
+    "paymentMode": "Cheque",
+    "paymentDt": "23/02/97",
+    "paymentTransRef": "TR100037",
+    "paymentMemNm": "GLML",
+    "paymentChitNum": "LTGX 1007 56",
+    "paymentInsMonNum": "22",
+    "paymentAgentNm": "GRR"
+  },
+  {
+    "paymentId": "17",
+    "paymentMode": "Cheque",
+    "paymentDt": "23/02/97",
+    "paymentTransRef": "TR100037",
+    "paymentMemNm": "Susheela",
+    "paymentChitNum": "LTGX 1007 56",
+    "paymentInsMonNum": "22",
+    "paymentAgentNm": "GRR"
+  },
+  {
+    "paymentId": "01",
+    "paymentMode": "Cheque",
+    "paymentDt": "23/02/97",
+    "paymentTransRef": "TR100037",
+    "paymentMemNm": "SGAY",
+    "paymentChitNum": "LTGX 1007 56",
+    "paymentInsMonNum": "22",
+    "paymentAgentNm": "GRR"
+  }
+]

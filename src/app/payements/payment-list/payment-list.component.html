@@ -32,7 +32,7 @@
     <ng-container matColumnDef="Edit">
       <th mat-header-cell *matHeaderCellDef mat-sort-header> </th>
       <td mat-cell *matCellDef="let row" >
-        <a [routerLink]="['/Payments/edit', row.paymentId]" [state]=row>
+        <a (click)='sendData(row)'>
           <mat-icon svgIcon="edit" aria-hidden="false" aria-label="Edit"></mat-icon>
         </a >
        </td>
@@ -45,3 +45,4 @@
   <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
 </div>
 
+<!-- [routerLink]="['/Payments/edit', row.paymentId]" [state]=row -->

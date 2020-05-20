@@ -1,11 +1,13 @@
 import { Component, OnInit, ViewChild, OnDestroy } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormGroupDirective, AbstractControl } from '@angular/forms';
 import { Observable, range } from 'rxjs';
-import { map, startWith } from 'rxjs/operators';
+import { map, startWith, filter, take } from 'rxjs/operators';
 import { MatOptionSelectionChange } from '@angular/material';
 import { AutoCompValidator } from 'src/app/Shared/AutoCompValidator';
 import {  ActivatedRoute, Router } from '@angular/router';
 import { IPayment } from '../paymentModel';
+import { PaymentService } from '../payment.service';
+
 
 @Component({
   selector: 'app-payment-form',
@@ -30,18 +32,22 @@ export class PaymentFormComponent implements OnInit, OnDestroy {
   hideTransNo: boolean = true;
   @ViewChild(FormGroupDirective,{static: false}) myForm: FormGroupDirective;
   editMode = false;
-  id: number;
+  id: string;
   paramSubs: any;
-  paymentObj: IPayment;
-  constructor(private route: ActivatedRoute,private router: Router) {
+  paymentObj: IPayment = new IPayment();
+  private paymObservable = this.service.getAllPayments().pipe(
+    map(x => x.find( y => y.paymentId === this.id)),
+  )
+  constructor(private route: ActivatedRoute,private router: Router, private service: PaymentService) {
       this.paramSubs = route.params.subscribe(params => {
-        this.id = +params['id'];
-        if( this.id) {
+        this.id = params['id'];
+        if ( this.id) {
         this.editMode = true;
-        console.log('ID : ' + this.id + ' Is edit mode enabled: ' + this.editMode)
-        //console.log((this.router.getCurrentNavigation().extras.state));
-        //this.paymentObj = this.router.getCurrentNavigation().extras.state;
-        //console.log(this.paymentObj.paymentId);
+        console.log('ID : ' + this.id + ' Is edit mode enabled: ' + this.editMode);
+        const paymentSubs = this.paymObservable.subscribe(data => {
+          this.paymentObj = data;
+          this.setForm(this.paymentObj);
+        });
         } else{
           this.editMode = false;
           console.log('ID : ' + this.id + ' Is edit mode enabled: ' + this.editMode)
@@ -51,13 +57,13 @@ export class PaymentFormComponent implements OnInit, OnDestroy {
 
 
   paymentForm: FormGroup = new FormGroup ({
-    paymntMode: new FormControl('', Validators.required),   /* Formcontrol for payment mode*/
-    paymntDt: new FormControl('', Validators.required),    /* Formcontrol for payment date*/
-    transRef: new FormControl({value: '', disabled: true}, Validators.required),    /* Formcontrol for transaction reference*/
-    memberName: new FormControl('',[Validators.required, AutoCompValidator.validator(this.users)] ),  /* Formcontrol for member name */
-    chitNum: new FormControl('', [Validators.required, AutoCompValidator.validator(this.nos)]),     /* FormControl for chit id number */
-    monthNum: new FormControl('', [Validators.required, AutoCompValidator.validator(this.months)]),    /* Formcontrol for installment no */
-    agentNm: new FormControl('', [Validators.required, AutoCompValidator.validator(this.agent)])      /* Formcontrol for agent Name */
+    paymntMode: new FormControl(this.paymentObj.paymentMode, Validators.required),   /* Formcontrol for payment mode*/
+    paymntDt: new FormControl(this.paymentObj.paymentDt, Validators.required),    /* Formcontrol for payment date*/
+    transRef: new FormControl({value: this.paymentObj.paymentTransRef, disabled: true}, Validators.required),
+    memberName: new FormControl(this.paymentObj.paymentMemNm ,[Validators.required, AutoCompValidator.validator(this.users)] ),
+    chitNum: new FormControl(this.paymentObj.paymentChitNum, [Validators.required, AutoCompValidator.validator(this.nos)]),
+    monthNum: new FormControl(this.paymentObj.paymentInsMonNum, [Validators.required, AutoCompValidator.validator(this.months)]),
+    agentNm: new FormControl(this.paymentObj.paymentAgentNm, [Validators.required, AutoCompValidator.validator(this.agent)])
   });
   pymntType(value) {
     if (value === 'cash' || value === '') {
@@ -67,8 +73,6 @@ export class PaymentFormComponent implements OnInit, OnDestroy {
     }
   }
   ngOnInit() {
-    this.paymentObj = history.state;
-    console.log(' from init: ' + this.paymentObj.paymentAgentNm)
     this.filterusers = this.paymentForm.get('memberName').valueChanges.pipe(
       startWith(''),
       // map(value => this._filter(value))
@@ -102,6 +106,21 @@ export class PaymentFormComponent implements OnInit, OnDestroy {
     }
     ngOnDestroy(): void {
       this.paramSubs.unsubscribe();
+      this.paramSubs.unsubscribe();
+    }
+
+    setForm(payment: IPayment): void {
+    /*   this.paymentForm.setValue({
+        paymntMode: payment.paymentMode,
+        paymntDt: payment.paymentDt,
+        transRef: payment.paymentTransRef,
+        memberName: payment.paymentMemNm,
+        chitNum: payment.paymentChitNum,
+        monthNum: payment.paymentInsMonNum,
+        agentNm: payment.paymentAgentNm
+      }) */
+      this.paymentObj = payment;
+      console.log(this.paymentObj)
     }
  /*  private _filter(name: string): string[] {
     const filterValue = name.toLowerCase();

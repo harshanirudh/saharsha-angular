@@ -1,7 +1,7 @@
 <div class="myform">
 
-  <form #f="ngForm" (ngSubmit)="onSubmit(userRForm.value)" [formGroup]="userRForm">
-    <mat-grid-list cols="4" rowHeight="70px" [gutterSize]="'30px'">
+  <form #f="ngForm" (ngSubmit)="onSubmit()" [formGroup]="userRForm">
+    <mat-grid-list cols="4" rowHeight="70px" [gutterSize]="'40px'">
       <mat-grid-tile [colspan]=2>
         <mat-form-field>
           <mat-label >Enter User First Name</mat-label>
@@ -54,7 +54,7 @@
         </mat-form-field>
       </mat-grid-tile>
 
-      <mat-grid-tile [colspan]=2 >
+      <mat-grid-tile [colspan]=2  >
         <div class="example">
         <!-- <mat-list>
           <mat-list-item> -->

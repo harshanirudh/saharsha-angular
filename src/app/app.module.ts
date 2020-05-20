@@ -33,6 +33,7 @@ const appRoutes: Routes = [
   {path: 'Users/all' , component : UsersListComponent, data: {title:'All Users'}},
   {path: 'Users/new' , component: UserFormComponent, data: {title: 'New User Registration'}},
   {path: 'User' , component: UserDetailsComponent, data: {title: 'User Details'}},
+  {path: 'Users/edit/:id', component: UserFormComponent, data: {title:'Update User Details'}},
   {path: 'Chits', component: ChitsListComponent, data: {title: 'List of Chits'}},
   {path: 'Chits/new', component: ChitsFormComponent, data:{ title: 'New Chit Registration'}},
   {path: 'Payments/All', component : PaymentListComponent, data:{ title: 'List of Payments'}},
