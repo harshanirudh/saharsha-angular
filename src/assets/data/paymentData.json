@@ -1,8 +1,8 @@
 [
   {
   "paymentId": "23",
-  "paymentMode": "Cheque",
-  "paymentDt": "23/02/97",
+  "paymentMode": "cheque",
+  "paymentDt": "2020-02-27",
   "paymentTransRef": "TR100037",
   "paymentMemNm": "Suhas",
   "paymentChitNum": "LTGX 1007 56",

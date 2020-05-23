@@ -29,6 +29,7 @@ import { PaymentListComponent } from './payements/payment-list/payment-list.comp
 import { PaymentFormComponent } from './payements/payment-form/payment-form.component';
 import { HttpClientModule } from '@angular/common/http';
 
+
 const appRoutes: Routes = [
   {path: 'Users/all' , component : UsersListComponent, data: {title:'All Users'}},
   {path: 'Users/new' , component: UserFormComponent, data: {title: 'New User Registration'}},
@@ -52,7 +53,8 @@ const appRoutes: Routes = [
     ChitsListComponent,
     ChitsFormComponent,
     PaymentListComponent,
-    PaymentFormComponent
+    PaymentFormComponent,
+
   ],
   imports: [
     BrowserModule,

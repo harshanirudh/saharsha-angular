@@ -20,19 +20,22 @@ displayedColumns = ['uid', 'uname', 'ucat', 'dob' , 'Edit'];
     "uid" : 1,
     "uname" : 'Harsha Anirudh',
     "ucat" : 'Admin',
-    "dob" : '27-02-1997'
+    "dob" : '27-02-1997',
+    "activechits": null
   },
   {
     "uid" : 2,
     "uname" : 'GRR',
     "ucat" : 'Admin',
-    "dob" : '03-06-1960'
+    "dob" : '03-06-1960',
+    "activechits": null
   },
   {
     "uid" : 3,
     "uname" : 'Glml',
     "ucat" : 'User',
-    "dob" : '03-06-1960'
+    "dob" : '03-06-1960',
+    "activechits": null
   }
 ];
 userDataSource: MatTableDataSource<Users> = new MatTableDataSource(this.UserList);

@@ -56,6 +56,7 @@ constructor(iconRegistry: MatIconRegistry, sanitizer: DomSanitizer, private rout
 
   sendData(row: IPayment) {
     this.router.navigate(['/Payments/edit', row.paymentId]);
+    this.service.sendPayment(row);
   }
 }
 /**

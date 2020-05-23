@@ -29,7 +29,7 @@
       <a mat-menu-item routerLink='/User'>Edit Users</a>
     </mat-menu>
 
-    <span style="flex-grow: 0.05"></span>
+    <!-- <span style="flex-grow: 0.05"></span> -->
     <a mat-button routerLink='/Chits'  > CHITS</a>
     <!-- <mat-menu #chitsmenu="matMenu">
       <a mat-menu-item href='#'>Active Chits</a>
@@ -37,12 +37,17 @@
       <a mat-menu-item>Upcoming Chits</a>
     </mat-menu> -->
 
-    <span style="flex-grow: 0.05"></span>
+    <!-- <span style="flex-grow: 0.05"></span> -->
     <a mat-button [matMenuTriggerFor]="paymentmenu"  > PAYMENTS</a>
   <mat-menu #paymentmenu="matMenu"  >
       <a mat-menu-item routerLink='/Payments/All'> All Payments </a>
       <a mat-menu-item routerLink='/Payments/new' >New Payments</a>
     </mat-menu>
+    <span class="end"></span>
+    <span>
+      <button mat-raised-button='/login' *ngIf= false>Login</button>
+      <button mat-raised-button='/login' *ngIf= true>Logout</button>
+    </span>
   </mat-toolbar-row>
 </mat-toolbar>
 

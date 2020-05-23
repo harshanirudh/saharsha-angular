@@ -11,6 +11,7 @@ export class UserService{
     uid: null,
     dob: null,
     ucat: null,
+    activechits: null,
     uname: null
   }
   constructor() {

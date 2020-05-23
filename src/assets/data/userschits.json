@@ -1,0 +1,36 @@
+[
+  {
+    "uname":"harsha" ,
+    "uid":123,
+    "activechits":
+    [
+      {
+        "chitname":"LTX1056 78",
+        "start":23,
+        "end":25
+      },
+      {
+        "chitname":"LTX1046 78",
+        "start":2,
+        "end":25
+      }
+    ]
+  },
+  {
+    "uname":"haritha" ,
+    "uid":12,
+    "activechits":
+    [
+      {
+        "chitname":"LTX1065 18",
+        "start":3,
+        "end":22
+      },
+      {
+        "chitname":"LTX1046 78",
+        "start":10,
+        "end":15
+      }
+    ]
+  }
+]
